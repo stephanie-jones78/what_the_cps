@@ -11,33 +11,50 @@ Resource | Use | Description
 [Apache Tika]() Wikipedia Page | Text parsing and extraction | A content detection and analysis framework, written in Java, stewarded at the Apache Software Foundation. It detects and extracts metadata and text from over a thousand different file types, and as well as providing a Java library, has server and command-line editions suitable for use from other programming languages.
 
 ## Data Dictionary
-### Billing Info
+<details><summary>Billing Info</summary>
+
 Bill Detail | Label | Description
 :-- | :-- | :--
 Billing Date | `bill_date` | YYYY-MM-DD
 Billing Period Start | `bill_start` | YYYY-MM-DD | Start date of the billing period
 Billing Period End | `bill_end` | YYYY-MM-DD | End date of the billing period
 Billing Period (days) | `bill_period_days` | *int*, number of days in billing period, `bill_end` - `bill_start`
-Meter Read | `meter` | The meter reading
+</details>
 
-### Charges
+<details><summary>Base Amounts</summary>
+
+Base Figure | Label | Description
+:-- | :-- | :--
+Meter Read | `meter` | The meter reading
+Energy Consumption | `consumption` | kWh Used
+*Peak Consumption | `peak` | *float*, kWh used in excess of 600 during designated peak months;
+Peak Consumption - All Months | `peak_all`| kWh used in excess of 600 for all months
+</details>
+
+<details><summary>Rates</summary>
+
+Rate Detail | Label | Description
+:-- | :-- | :--
+Base rate | `consumption_rate` | *float*, per kWh charge for consumption
+Peak Consumption Rate | `peak_rate` | *float*, per kWh charge for peak consumption
+*Fuel Adjustment Rate | `fuel_rate` | *float*, The cost for fuel above the base rate
+Regualtory Adjustment Rate | `regulatory_rate` | *float*, This covers two costs — the cost of statewide transmission and the cost CPS Energy pays to be a part of the Electric Reliability Council of Texas (ERCOT)
+</details>
+
+<details><summary>Charges</summary>
+
 Charge Detail | Label | Description
 :-- | :-- | :--
 *Service Availablity Charge | `service_charge` | *float*, Covers the cost of metering and billing for your address, regardless of consumption
-Energy Consumption | `consumption` | kWh Used
-Base rate | `consumption_rate` | *float*, per kWh charge for consumption
-Energy Charge | `consumption_charge` | *float*, Recovers costs for power plants and other infrastructure based on the amount of electricity you use, `consumption` * `consumption_rate`
-*Peak Consumption | `peak` | *float*, kWh used in excess of 600 during designated peak months;
-Peak Consumption - All Months | `peak_all`| kWh used in excess of 600 for all months 
-Peak Consumption Rate | `peak_rate` | *float*, per kWh charge for peak consumption
+Energy Charge | `consumption_charge` | *float*, Recovers costs for power plants and other infrastructure based on the amount of electricity you use, `consumption` * `consumption_rate` 
 Peak Consumption Charge | `peak_charge` | *float*, The Peak Capacity Charge covers the higher costs for electricity CPS Energy incurs during summer months when demand for electricity is at its highest
-*Fuel Adjustment Rate | `fuel_rate` | *float*, The cost for fuel above the base rate. 
 Fuel Adjustment Charge | `fuel_charge` | *float*, `fuel_rate` * `consumption`, The fuel adjustment covers the difference between the base rate customers are charged for natural gas use and how much it actually costs to get and deliver that gas. This charge fluctuates with the market price of natural gas.
-Regualtory Adjustment Rate | `regulatory_rate` | *float*, This covers two costs — the cost of statewide transmission and the cost CPS Energy pays to be a part of the Electric Reliability Council of Texas (ERCOT).
 Regulatory Adjustment Charge | `regulatory_charge` | *float*, `regulatory_rate` * `consumption` 
 Total Bill Amount | `total_bill` | *float*, (1) `service_charge` + (2) `consumption_charge` + (3) `peak_charge` + (4) `fuel_charge` + (5) `regulatory_charge`
+</details>
 
-### Weather Data
+<details><summary>Weather Data</summary>
+
 Weather Detail | Label | Description
 :-- | :-- | :--
 Weather Date
@@ -54,9 +71,10 @@ Precipitation
 Sun Hours
 Sunrise
 Sunset
+</details>
 
-> ## Expanded Definitions
-(denoted by *asterisk above)
+<details><summary>Expanded Definitions<br>
+(denoted by *asterisk above)</summary>
 
 >****Service Availability Charge***<br>
 This is a fixed monthly charge to recover billing and metering. Billing costs include the paper the bill is printed on, the envelope and mailing costs. Metering covers the physical meter, transmission lines and poles, down to screws and bolts. Prior to the rate increase, this charge was $8.75.
@@ -69,4 +87,4 @@ This rate fluctuates monthly based on the prices CPS Energy pays for fuel. When 
 
 >****Regulatory Adjustment***<br>
  As part of ERCOT, CPS Energy is able to buy additional power from the market as needed and to sell excess power into the market. ERCOT is responsible for managing the statewide electric grid, and as such charges a mandatory fee to recover its administrative costs for managing the grid. 
-
+</details>
