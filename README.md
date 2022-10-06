@@ -1,6 +1,17 @@
 # What the CPS?
 ![My Image](imgs/header.png)
 
+## Lesson Learned
+### PII Masking
+I am working with personal account data and wanted to share my work wihtout exposing PII. I used a hidden file to store sensitive information and manually block out sensitive data in image files. I also set up my notebooks so that the full text of extracted text would never be returned, only the parsed, non-PII data.
+
+### Error Handling
+There were only certain months that had peak charge information and when I tried parsing the bills outside of those months, without peak charges, I kept getting errors. This was a perfect use case for incorporating exception handling in my scripts using the `try` . . .  `except` syntax. This was, if a bill didn't have peak data, the value would be 0. 
+
+<br>
+<hr>
+
+
 Resource | Use | Description
 :-- | :-- | :--
 [How to Read Your CPS Bill](https://www.cpsenergy.com/content/dam/corporate/en/Documents/Your_Bill.pdf) | Data Definitions | CPS Energy guide to reading and understanding energy bill
