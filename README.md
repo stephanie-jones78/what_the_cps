@@ -1,6 +1,15 @@
 # What the CPS?
 ![My Image](imgs/header.png)
 
+## Additional Fields
+- Average consumption per day
+
+## Exploratory Questions
+Problem: What is driving higher energy bills?
+- Are overall energy bills truly trending upward?
+- What is the correlation between meter reading and consumption?
+- How frequently is each rates changing? Are they changing at the same time/in the same directio?
+
 ## Lesson Learned
 ### PII Masking
 I am working with personal account data and wanted to share my work wihtout exposing PII. I used a hidden file to store sensitive information and manually block out sensitive data in image files. I also set up my notebooks so that the full text of extracted text would never be returned, only the parsed, non-PII data.
